@@ -1,0 +1,206 @@
+"" Base Settings
+"" ========================================================
+set scrolloff=10
+set linenumber
+set showmode
+set showcmd
+set smartcase
+set incsearch
+set hlsearch
+set multicursor
+set sneak
+set visualbell
+set clipboard+=unnamedplus
+set surround
+set highlightedyank
+set sneak
+set nerdtree
+set relativenumber
+set number
+
+" Easymotion settings
+set easymotion
+set notimeout
+
+" WhichKey settings
+set which-key
+let mapleader = " "
+let g:WhichKey_KeyColor = "#dc7d68"
+let g:WhichKey_CommandColor = "#adf182"
+let g:WhichKey_PrefixColor = "#916cad"
+let g:WhichKey_SortOrder = "by_key_prefix_first"
+let g:WhichKey_SortCaseSensitive = "false"
+let g:WhichKey_ShowVimActions = "false"
+
+"" Key mappings
+"" ========================================================
+
+" Tab navigation
+nnoremap <A-k> :tabnext<CR>
+nnoremap <A-j> :tabprev<CR>
+
+" Jump between methods
+nmap [[ <Action>(MethodUp)
+nmap ]] <Action>(MethodDown)
+
+" Popup navigation
+imap <A-j> <Action>(EditorDown)
+imap <A-k> <Action>(EditorUp)
+map mm <Action>(ShowPopupMenu)
+
+"" Leader commands
+"" ========================================================
+
+" Reopen Tab
+map <leader>X <Action>(ReopenClosedTab)
+let g:WhichKeyDesc_reopen_tab = "<leader>X Reopen tab"
+
+" Enter IDE terminal
+map <leader>t <Action>(ActivateTerminalToolWindow)
+let g:WhichKeyDesc_terminal = "<leader>t Open IDE terminal"
+
+" Show Action Id
+map <leader>aa <Action>(VimFindActionIdAction)
+let g:WhichKeyDesc_action_id = "<leader>aa Show actions ids"
+
+" Sync
+map <leader>sg <Action>(Android.SyncProject) \| <Action>(ExternalSystem.ProjectRefreshAction)
+map <leader>sv <Action>(IdeaVim.ReloadVimRc.reload)
+map <leader>sb <Action>(CompileDirty) \| <Action>(MakeGradleProject)
+map <leader>sR <Action>(CompileProject)
+map <leader>sc <Action>(CleanGradleProject)
+map <leader>sr <Action>(Run)
+map <leader>ss <Action>(Stop)
+
+let g:WhichKeyDesc_sync = "<leader>s Build"
+let g:WhichKeyDesc_sync_gradle = "<leader>sg Sync gradle"
+let g:WhichKeyDesc_sync_vim = "<leader>sv Reload vim"
+let g:WhichKeyDesc_sync_build = "<leader>sb Build"
+let g:WhichKeyDesc_sync_rebuild = "<leader>sR Rebuild"
+let g:WhichKeyDesc_sync_run = "<leader>sr Run"
+let g:WhichKeyDesc_sync_clean = "<leader>sc Clean"
+let g:WhichKeyDesc_sync_stop = "<leader>ss Stop"
+
+" Comment lines
+map <leader>c <action>(CommentByLineComment)
+let g:WhichKeyDesc_comment = "<leader>c Comment line"
+
+" Jump around with easymotion
+map <leader>j <Plug>(easymotion-s)
+let g:WhichKeyDesc_easymotion = "<leader>j Jump with Easymotion"
+
+" Open NERDTree (use q to exit)
+map <leader>x :NERDTreeToggle<CR>
+let g:WhichKeyDesc_nerdtree = "<leader>x Open NERDtree"
+
+" Folding
+map <leader>za :action CollapseAllRegions<CR>
+map <leader>zA :action ExpandAllRegions<CR>
+map <leader>zc :action CollapseRegion<CR>
+map <leader>zC :action ExpandRegion<CR>
+
+let g:WhichKeyDesc_fold_menu = "<leader>z Folding"
+let g:WhichKeyDesc_fold_all = "<leader>za Collapse all regions"
+let g:WhichKeyDesc_unfold_all = "<leader>zA Expand all regions"
+let g:WhichKeyDesc_fold = "<leader>zc Collapse region"
+let g:WhichKeyDesc_unfold = "<leader>zC Expand region"
+
+" WINDOW SPLITS
+map <leader>wv <Action>(SplitVertically)
+map <leader>ws <Action>(SplitHorizontally)
+map <leader>wu <Action>(Unsplit)
+map <leader>wm <Action>(MoveEditorToOppositeTabGroup)
+
+let g:WhichKeyDesc_window = "<leader>w Window splits"
+let g:WhichKeyDesc_window_split_vertically = "<leader>wv Split vertically"
+let g:WhichKeyDesc_window_split_horizontally = "<leader>ws Split horizontally"
+let g:WhichKeyDesc_window_split_unsplit = "<leader>wu Unsplit"
+let g:WhichKeyDesc_window_split_move_editor = "<leader>wm Move editor to opposite tab group"
+
+" ACTIONS
+map <leader>am <action>(ShowIntentionActions)
+map <leader>ap <Action>(ParameterInfo)
+map <leader>ae <Action>(ShowErrorDescription)
+
+let g:WhichKeyDesc_action = "<leader>a Actions"
+let g:WhichKeyDesc_action_context_menu = "<leader>am Context menu"
+let g:WhichKeyDesc_action_parameter_info = "<leader>ap Parameter info"
+let g:WhichKeyDesc_action_error_info = "<leader>ae Error info"
+
+
+" FILE NAVIGATION
+map <leader>ff <action>(GotoFile)
+"map <leader>fr <action>(RecentFiles)
+map <leader>fc <action>(FindInPath)
+"map <leader>fl <action>(RecentLocations)
+
+let g:WhichKeyDesc_file_nav = "<leader>f File navigation"
+let g:WhichKeyDesc_file_nav_goto_file = "<leader>ff Search file"
+let g:WhichKeyDesc_file_nav_goto_content = "<leader>fc Search for file content"
+let g:WhichKeyDesc_file_nav_show_recent_files = "<leader>fr Show recent files"
+let g:WhichKeyDesc_file_nav_show_recent_locations = "<leader>fl Show recent locations"
+
+" Create File
+map <leader>nf <Action>(NewFile)
+map <leader>nk <Action>(Kotlin.NewFile)
+map <leader>nd <Action>(NewDir)
+map <leader>ns <action>(NewScratchFile)
+
+let g:WhichKeyDesc_new_menu = "<leader>n Create new"
+let g:WhichKeyDesc_new_file_kotlin = "<leader>nk Kotlin file"
+let g:WhichKeyDesc_new_file_kotlin = "<leader>ns Scratch file"
+let g:WhichKeyDesc_new_dir = "<leader>nd Directory"
+
+" Close active tab
+map <leader>q <action>(CloseContent)
+
+let g:WhichKeyDesc_close_tab = "<leader>q Close active tab"
+
+" Refactoring
+map <leader>rn <Action>(RenameElement)
+map <leader>rf <Action>(ExtractFunction)
+map <leader>rm <Action>(Move)
+map <leader>rv <Action>(IntroduceVariable)
+map <leader>rr <Action>(Refactorings.QuickListPopupAction)
+
+let g:WhichKeyDesc_menu = "mm Menu"
+let g:WhichKeyDesc_refactor = "<leader>r Refactor"
+let g:WhichKeyDesc_refactor_rename = "<leader>rn Rename"
+let g:WhichKeyDesc_refactor_extract_function = "<leader>rf Extract function"
+let g:WhichKeyDesc_refactor_move_file = "<leader>rm Move file"
+let g:WhichKeyDesc_refactor_introduce_variable = "<leader>rv Extract variable"
+let g:WhichKeyDesc_refactor_quick_list = "<leader>rr Refactoring list"
+
+" Go to code
+nmap <leader>gd <Action>(GotoDeclaration)
+nmap <leader>gy <Action>(GotoTypeDeclarationExtract)
+nmap <leader>gi <Action>(GotoImplementation)
+nmap <leader>gt <Action>(GotoTest)
+nmap <leader>gf <Action>(Back)
+nmap <leader>gb <Action>(Forward)
+
+let g:WhichKeyDesc_goto = "<leader>g Go to"
+let g:WhichKeyDesc_goto_declaration = "<leader>gd Go to Definition"
+let g:WhichKeyDesc_goto_type_declaration = "<leader>gy Go to Type Definition"
+let g:WhichKeyDesc_goto_implementation = "<leader>gi Go to Implementation"
+let g:WhichKeyDesc_goto_usages = "<leader>gu Go to Usages"
+let g:WhichKeyDesc_goto_test = "<leader>gt Go to Test"
+let g:WhichKeyDesc_goto_back = "<leader>gb Go Back"
+let g:WhichKeyDesc_goto_forward = "<leader>gf Go Forward"
+let g:WhichKeyDesc_goto_sneak = "<leader>s Sneak forward"
+let g:WhichKeyDesc_goto_sneak = "<leader>S Sneak back"
+
+" Git windows
+map <leader>Gc <Action>(CheckinProject)
+map <leader>Gs <Action>(ActivateVersionControlToolWindow)
+map <leader>Gb <Action>(Git.Branches)
+
+let g:WhichKeyDesc_git = "<leader>G Git operations"
+let g:WhichKeyDesc_git_commit = "<leader>Gc Open Git commit dialog"
+let g:WhichKeyDesc_git_status = "<leader>Gs Open Git status dialog"
+let g:WhichKeyDesc_git_branches = "<leader>Gb Open Git branches list"
+
+" Which-key descriptions
+let g:WhichKeyDesc_leader = "<leader> Leader key"
+let g:WhichKeyDesc_easymotion_prefix = "<leader><Space> Easy-motion"
+
