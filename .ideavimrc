@@ -35,21 +35,47 @@ let g:WhichKey_ShowVimActions = "false"
 "" Key mappings
 "" ========================================================
 
-" Tab navigation
 nnoremap <A-k> :tabnext<CR>
 nnoremap <A-j> :tabprev<CR>
-
-" Jump between methods
-nmap [[ <Action>(MethodUp)
-nmap ]] <Action>(MethodDown)
 
 " Popup navigation
 imap <A-j> <Action>(EditorDown)
 imap <A-k> <Action>(EditorUp)
 map mm <Action>(ShowPopupMenu)
 
+" Jump between methods
+nmap [[ <Action>(MethodUp)
+nmap ]] <Action>(MethodDown)
+
 "" Leader commands
-"" ========================================================
+""========================================================
+
+
+" Windows navigation"
+"map <A-j> <Action>(Tree-selectNext)
+"map <A-k> <Action>(Tree-selectPrevious)
+
+" Debug
+nmap <leader>db <Action>(ToggleLineBreakpoint)
+nmap <leader>dd <Action>(Debug)
+nmap <leader>dD <Action>(AndroidConnectDebuggerAction)
+
+let g:WhichKeyDesc_debug = "<leader>d Debugging"
+let g:WhichKeyDesc_debug_breakpoint = "<leader>db Toggle breakpoint"
+let g:WhichKeyDesc_debug_debug = "<leader>dd Debug"
+let g:WhichKeyDesc_debug_connect = "<leader>dD Connect debugger"
+
+" Copilot
+imap <C-c> <Action>(copilot.applyInlays)
+let g:WhichKeyDesc_copilot = "<C-c> Copilot"
+
+" Bookmarks
+map <leader>ba <Action>(ToggleBookmark)
+map <leader>bb <Action>(ShowBookmarks)
+
+let g:WhichKeyDesc_bookmarks = "<leader>b Bookmarks"
+let g:WhichKeyDesc_bookmarks_toggle = "<leader>ba Toggle bookmark"
+let g:WhichKeyDesc_bookmarks_show = "<leader>bb Show bookmarks"
 
 " Reopen Tab
 map <leader>X <Action>(ReopenClosedTab)
@@ -70,6 +96,7 @@ map <leader>sb <Action>(CompileDirty) \| <Action>(MakeGradleProject)
 map <leader>sR <Action>(CompileProject)
 map <leader>sc <Action>(CleanGradleProject)
 map <leader>sr <Action>(Run)
+map <leader>st <Action>(RunClass)
 map <leader>ss <Action>(Stop)
 
 let g:WhichKeyDesc_sync = "<leader>s Build"
@@ -78,6 +105,7 @@ let g:WhichKeyDesc_sync_vim = "<leader>sv Reload vim"
 let g:WhichKeyDesc_sync_build = "<leader>sb Build"
 let g:WhichKeyDesc_sync_rebuild = "<leader>sR Rebuild"
 let g:WhichKeyDesc_sync_run = "<leader>sr Run"
+let g:WhichKeyDesc_sync_run_class = "<leader>sr Run this class/fun"
 let g:WhichKeyDesc_sync_clean = "<leader>sc Clean"
 let g:WhichKeyDesc_sync_stop = "<leader>ss Stop"
 
@@ -91,6 +119,7 @@ let g:WhichKeyDesc_easymotion = "<leader>j Jump with Easymotion"
 
 " Open NERDTree (use q to exit)
 map <leader>x :NERDTreeToggle<CR>
+map <leader>p :NERDTreeFind<CR>
 let g:WhichKeyDesc_nerdtree = "<leader>x Open NERDtree"
 
 " Folding
@@ -118,7 +147,7 @@ let g:WhichKeyDesc_window_split_unsplit = "<leader>wu Unsplit"
 let g:WhichKeyDesc_window_split_move_editor = "<leader>wm Move editor to opposite tab group"
 
 " ACTIONS
-map <leader>am <action>(ShowIntentionActions)
+map <leader>am <Action>(ShowIntentionActions)
 map <leader>ap <Action>(ParameterInfo)
 map <leader>ae <Action>(ShowErrorDescription)
 
@@ -203,4 +232,3 @@ let g:WhichKeyDesc_git_branches = "<leader>Gb Open Git branches list"
 " Which-key descriptions
 let g:WhichKeyDesc_leader = "<leader> Leader key"
 let g:WhichKeyDesc_easymotion_prefix = "<leader><Space> Easy-motion"
-
